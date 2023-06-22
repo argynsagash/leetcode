@@ -17,11 +17,3 @@ class NumberOfStepsToReduceANumberToZero {
         return step
     }
 }
-
-fun main() {
-    val solution = NumberOfStepsToReduceANumberToZero()
-    println(solution.numberOfSteps(14))
-    println(solution.numberOfSteps(8))
-    println(solution.numberOfSteps(123))
-
-}

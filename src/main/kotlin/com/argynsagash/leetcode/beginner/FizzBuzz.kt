@@ -25,11 +25,3 @@ class FizzBuzz {
         else -> it.toString()
     }}
 }
-
-fun main() {
-    val solution = FizzBuzz()
-    solution.fizzBuzz(3)
-    solution.fizzBuzz(5)
-    solution.fizzBuzz(15)
-
-}
