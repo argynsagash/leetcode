@@ -24,6 +24,17 @@ class MiddleOfTheLinkedList {
         }
         return headList
     }
+
+    //better solution
+    fun middleNodeThree(head: ListNode?): ListNode? {
+        var fast = head
+        var slow = head
+        while(fast?.next != null ){
+            slow = slow?.next
+            fast = fast.next?.next
+        }
+        return slow
+    }
 }
 
 class ListNode(var n: Int) {
