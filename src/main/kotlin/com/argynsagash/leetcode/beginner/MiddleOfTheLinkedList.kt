@@ -1,6 +1,7 @@
 package com.argynsagash.leetcode.beginner
 
 class MiddleOfTheLinkedList {
+
     fun middleNode(head: ListNode?): ListNode? {
 
         var listSize = 1
@@ -25,11 +26,11 @@ class MiddleOfTheLinkedList {
         return headList
     }
 
-    //better solution
-    fun middleNodeThree(head: ListNode?): ListNode? {
+    //version_2
+    fun middleNodeV2(head: ListNode?): ListNode? {
         var fast = head
         var slow = head
-        while(fast?.next != null ){
+        while (fast?.next != null) {
             slow = slow?.next
             fast = fast.next?.next
         }
