@@ -18,4 +18,15 @@ class Array101 {
         assertEquals(3, solution.findMaxConsecutiveOnesV2(arrayOne))
         assertEquals(2, solution.findMaxConsecutiveOnesV2(arrayTwo))
     }
+
+    @Test
+    fun findNumbers() {
+        val solution = FindNumbersWithEvenNumberOfDigits()
+        val arrayOne = intArrayOf(12, 345, 2, 6, 7896)
+        val arrayTwo = intArrayOf(555, 901, 482, 1771)
+
+        assertEquals(2, solution.findNumbers(arrayOne))
+        assertEquals(1, solution.findNumbers(arrayTwo))
+
+    }
 }
