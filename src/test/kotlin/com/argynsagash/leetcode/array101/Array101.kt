@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -27,6 +28,19 @@ class Array101 {
 
         assertEquals(2, solution.findNumbers(arrayOne))
         assertEquals(1, solution.findNumbers(arrayTwo))
+    }
 
+    @Test
+    fun sortedSquares() {
+        val solution = SquaresOfASortedArray()
+
+        val givenArrayOne = intArrayOf(-4, -1, 0, 3, 10)
+        val givenArrayTwo = intArrayOf(-7, -3, 2, 3, 11)
+
+        val expectedArrayOne = intArrayOf(0, 1, 9, 16, 100)
+        val expectedArrayTwo = intArrayOf(4, 9, 9, 49, 121)
+
+        assertArrayEquals(expectedArrayOne, solution.sortedSquares(givenArrayOne))
+        assertArrayEquals(expectedArrayTwo, solution.sortedSquares(givenArrayTwo))
     }
 }
