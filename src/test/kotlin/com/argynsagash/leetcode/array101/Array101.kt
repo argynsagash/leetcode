@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
+
 class Array101 {
 
     @Test
@@ -42,5 +43,29 @@ class Array101 {
 
         assertArrayEquals(expectedArrayOne, solution.sortedSquares(givenArrayOne))
         assertArrayEquals(expectedArrayTwo, solution.sortedSquares(givenArrayTwo))
+    }
+
+    @Test
+    fun duplicateZeros() {
+
+        val solution = DuplicateZeros()
+
+        val givenArrayOne = intArrayOf(1, 0, 2, 3, 0, 4, 5, 0)
+        val givenArrayTwo = intArrayOf(1, 2, 3)
+        val givenArrayThree = intArrayOf(1, 0)
+
+        val expectedArrayOne = intArrayOf(1, 0, 0, 2, 3, 0, 0, 4)
+        val expectedArrayTwo = intArrayOf(1, 2, 3)
+        val expectedArrayThree = intArrayOf(1,0)
+
+        solution.duplicateZeros(givenArrayOne)
+        assertArrayEquals(expectedArrayOne, givenArrayOne)
+
+        solution.duplicateZeros(givenArrayTwo)
+        assertArrayEquals(expectedArrayTwo, givenArrayTwo)
+
+        solution.duplicateZeros(givenArrayThree)
+        assertArrayEquals(expectedArrayThree, givenArrayThree)
+
     }
 }
