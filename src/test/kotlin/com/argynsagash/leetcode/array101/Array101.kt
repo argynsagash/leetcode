@@ -56,7 +56,7 @@ class Array101 {
 
         val expectedArrayOne = intArrayOf(1, 0, 0, 2, 3, 0, 0, 4)
         val expectedArrayTwo = intArrayOf(1, 2, 3)
-        val expectedArrayThree = intArrayOf(1,0)
+        val expectedArrayThree = intArrayOf(1, 0)
 
         solution.duplicateZeros(givenArrayOne)
         assertArrayEquals(expectedArrayOne, givenArrayOne)
@@ -66,6 +66,35 @@ class Array101 {
 
         solution.duplicateZeros(givenArrayThree)
         assertArrayEquals(expectedArrayThree, givenArrayThree)
+    }
+
+    @Test
+    fun merge() {
+        val solution = MergeSortedArray()
+
+        var givenArrayOne = intArrayOf(1, 2, 3, 0, 0, 0)
+        var numberOne = 3
+        var givenArrayTwo = intArrayOf(2, 5, 6)
+        var numberTwo = 3
+        var expectedArrayOne = intArrayOf(1, 2, 2, 3, 5, 6)
+        solution.merge(givenArrayOne, numberOne, givenArrayTwo, numberTwo)
+        assertArrayEquals(expectedArrayOne, givenArrayOne)
+
+        givenArrayOne = intArrayOf(1)
+        numberOne = 1
+        givenArrayTwo = intArrayOf()
+        numberTwo = 0
+        expectedArrayOne = intArrayOf(1)
+        solution.merge(givenArrayOne, numberOne, givenArrayTwo, numberTwo)
+        assertArrayEquals(expectedArrayOne, givenArrayOne)
+
+        givenArrayOne = intArrayOf(0)
+        numberOne = 0
+        givenArrayTwo = intArrayOf(1)
+        numberTwo = 1
+        expectedArrayOne = intArrayOf(1)
+        solution.merge(givenArrayOne, numberOne, givenArrayTwo, numberTwo)
+        assertArrayEquals(expectedArrayOne, givenArrayOne)
 
     }
 }
