@@ -3,6 +3,7 @@ package com.argynsagash.leetcode.array101
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.util.Arrays.sort
 
 
 class Array101 {
@@ -96,5 +97,30 @@ class Array101 {
         solution.merge(givenArrayOne, numberOne, givenArrayTwo, numberTwo)
         assertArrayEquals(expectedArrayOne, givenArrayOne)
 
+    }
+
+    @Test
+    fun removeElement() {
+        val solution = RemoveElement()
+        var givenArrayOne = intArrayOf(3, 2, 2, 3)
+        var number = 3
+        var expectedArrayOne = intArrayOf(2, 2)
+        assertEquals(2, solution.removeElement(givenArrayOne, number))
+        sort(givenArrayOne, 0, expectedArrayOne.size)
+        sort(expectedArrayOne, 0, expectedArrayOne.size)
+        for (i in expectedArrayOne.indices) {
+            assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
+        }
+
+        //test_version_2
+        givenArrayOne = intArrayOf(0, 1, 2, 2, 3, 0, 4, 2)
+        number = 2
+        expectedArrayOne = intArrayOf(0, 1, 4, 0, 3)
+        assertEquals(5, solution.removeElementV2(givenArrayOne, number))
+        sort(givenArrayOne, 0, expectedArrayOne.size)
+        sort(expectedArrayOne, 0, expectedArrayOne.size)
+        for (i in expectedArrayOne.indices) {
+            assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
+        }
     }
 }
