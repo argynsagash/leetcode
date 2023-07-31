@@ -108,9 +108,9 @@ class Array101 {
         assertEquals(2, solution.removeElement(givenArrayOne, number))
         sort(givenArrayOne, 0, expectedArrayOne.size)
         sort(expectedArrayOne, 0, expectedArrayOne.size)
-        for (i in expectedArrayOne.indices) {
+        for (i in expectedArrayOne.indices)
             assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
-        }
+
 
         //test_version_2
         givenArrayOne = intArrayOf(0, 1, 2, 2, 3, 0, 4, 2)
@@ -119,8 +119,25 @@ class Array101 {
         assertEquals(5, solution.removeElementV2(givenArrayOne, number))
         sort(givenArrayOne, 0, expectedArrayOne.size)
         sort(expectedArrayOne, 0, expectedArrayOne.size)
-        for (i in expectedArrayOne.indices) {
+        for (i in expectedArrayOne.indices)
             assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
-        }
+
+    }
+
+    @Test
+    fun removeDuplicates() {
+        val solution = RemoveDuplicatesFromSortedArray()
+        var givenArrayOne = intArrayOf(1, 1, 2)
+        var expectedArrayOne = intArrayOf(1, 2)
+        assertEquals(2, solution.removeDuplicates(givenArrayOne))
+        for (i in expectedArrayOne.indices)
+            assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
+
+
+        givenArrayOne = intArrayOf(0, 0, 1, 1, 1, 2, 2, 3, 3, 4)
+        expectedArrayOne = intArrayOf(0, 1, 2, 3, 4)
+        assertEquals(5, solution.removeDuplicates(givenArrayOne))
+        for (i in expectedArrayOne.indices)
+            assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
     }
 }
