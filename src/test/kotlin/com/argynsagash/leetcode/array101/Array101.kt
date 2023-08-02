@@ -140,4 +140,21 @@ class Array101 {
         for (i in expectedArrayOne.indices)
             assert(givenArrayOne.get(i) === expectedArrayOne.get(i))
     }
+
+    @Test
+    fun checkIfExist() {
+        val solution = CheckIfNAndItsDoubleExist()
+        var givenArray = intArrayOf(10, 2, 5, 3)
+        assertEquals(true, solution.checkIfExist(givenArray))
+
+        givenArray = intArrayOf(3, 1, 7, 11)
+        assertEquals(false, solution.checkIfExist(givenArray))
+
+        givenArray = intArrayOf(7, 1, 14, 11)
+        assertEquals(true, solution.checkIfExist(givenArray))
+
+        givenArray = intArrayOf(-2, 0, 10, -19, 4, 6, -8)
+        assertEquals(false, solution.checkIfExist(givenArray))
+
+    }
 }
