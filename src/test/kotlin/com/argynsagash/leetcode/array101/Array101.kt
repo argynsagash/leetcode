@@ -156,5 +156,35 @@ class Array101 {
         givenArray = intArrayOf(-2, 0, 10, -19, 4, 6, -8)
         assertEquals(false, solution.checkIfExist(givenArray))
 
+
+    }
+
+    @Test
+    fun validMountainArray() {
+        val solution = ValidMountainArray()
+
+        var givenArray = intArrayOf(2, 1)
+        assertEquals(false, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(3, 5, 5)
+        assertEquals(false, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(0, 3, 2, 1)
+        assertEquals(true, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(1, 3, 2)
+        assertEquals(true, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+        assertEquals(false, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(0, 1, 2, 4, 2, 1)
+        assertEquals(true, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(14, 82, 89, 84, 84)
+        assertEquals(false, solution.validMountainArray(givenArray))
+
+        givenArray = intArrayOf(14, 82, 89, 84, 79, 70, 70, 68, 67)
+        assertEquals(false, solution.validMountainArray(givenArray))
     }
 }
