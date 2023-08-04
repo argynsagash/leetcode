@@ -187,4 +187,18 @@ class Array101 {
         givenArray = intArrayOf(14, 82, 89, 84, 79, 70, 70, 68, 67)
         assertEquals(false, solution.validMountainArray(givenArray))
     }
+
+    @Test
+    fun replaceElements() {
+        val solution = ReplaceElementsWithGreatestElementOnRightSide()
+
+        var givenArray = intArrayOf(17, 18, 5, 4, 6, 1)
+        var expectedArray = intArrayOf(18, 6, 6, 6, 1, -1)
+        assertArrayEquals(expectedArray, solution.replaceElements(givenArray))
+
+        givenArray = intArrayOf(400)
+        expectedArray = intArrayOf(-1)
+        assertArrayEquals(expectedArray, solution.replaceElements(givenArray))
+
+    }
 }
