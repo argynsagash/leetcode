@@ -201,4 +201,34 @@ class Array101 {
         assertArrayEquals(expectedArray, solution.replaceElements(givenArray))
 
     }
+
+    @Test
+    fun moveZeroes() {
+        val solution = MoveZeroes()
+
+        var givenArray = intArrayOf(0, 1, 0, 3, 12)
+        var expectedArray = intArrayOf(1, 3, 12, 0, 0)
+
+        solution.moveZeroes(givenArray)
+        assertArrayEquals(expectedArray, givenArray)
+
+        givenArray = intArrayOf(0)
+        expectedArray = intArrayOf(0)
+
+        solution.moveZeroes(givenArray)
+        assertArrayEquals(expectedArray, givenArray)
+
+        givenArray = intArrayOf(1)
+        expectedArray = intArrayOf(1)
+
+        solution.moveZeroes(givenArray)
+        assertArrayEquals(expectedArray, givenArray)
+
+        givenArray = intArrayOf(1,0)
+        expectedArray = intArrayOf(1,0)
+
+        solution.moveZeroes(givenArray)
+        assertArrayEquals(expectedArray, givenArray)
+
+    }
 }
