@@ -236,19 +236,19 @@ class Array101 {
     fun sortArrayByParity() {
         val solution = SortArrayByParity()
         var givenArray = intArrayOf(3, 1, 2, 4)
-        solution.sortArrayByParityV2(givenArray)
+        var result = solution.sortArrayByParity(givenArray)
         var evenCounter = 0
         for (i in givenArray) if (i % 2 == 0) evenCounter++
         for (i in 0 until evenCounter) {
-            assertEquals(0, givenArray[i] % 2)
+            assertEquals(0, result[i] % 2)
         }
 
         givenArray = intArrayOf(0)
-        solution.sortArrayByParityV2(givenArray)
+        result = solution.sortArrayByParity(givenArray)
         evenCounter = 0
         for (i in givenArray) if (i % 2 == 0) evenCounter++
         for (i in 0 until evenCounter) {
-            assertEquals(0, givenArray[i] % 2)
+            assertEquals(0, result[i] % 2)
         }
     }
 }

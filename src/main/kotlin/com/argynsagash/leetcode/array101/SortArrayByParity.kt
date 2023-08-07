@@ -18,4 +18,5 @@ class SortArrayByParity {
 
     //version_2
     fun sortArrayByParityV2(nums: IntArray) = nums.sortedBy { it % 2 != 0 }.toIntArray()
+
 }
