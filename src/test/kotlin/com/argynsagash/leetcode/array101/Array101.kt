@@ -224,11 +224,31 @@ class Array101 {
         solution.moveZeroes(givenArray)
         assertArrayEquals(expectedArray, givenArray)
 
-        givenArray = intArrayOf(1,0)
-        expectedArray = intArrayOf(1,0)
+        givenArray = intArrayOf(1, 0)
+        expectedArray = intArrayOf(1, 0)
 
         solution.moveZeroes(givenArray)
         assertArrayEquals(expectedArray, givenArray)
 
+    }
+
+    @Test
+    fun sortArrayByParity() {
+        val solution = SortArrayByParity()
+        var givenArray = intArrayOf(3, 1, 2, 4)
+        solution.sortArrayByParityV2(givenArray)
+        var evenCounter = 0
+        for (i in givenArray) if (i % 2 == 0) evenCounter++
+        for (i in 0 until evenCounter) {
+            assertEquals(0, givenArray[i] % 2)
+        }
+
+        givenArray = intArrayOf(0)
+        solution.sortArrayByParityV2(givenArray)
+        evenCounter = 0
+        for (i in givenArray) if (i % 2 == 0) evenCounter++
+        for (i in 0 until evenCounter) {
+            assertEquals(0, givenArray[i] % 2)
+        }
     }
 }
