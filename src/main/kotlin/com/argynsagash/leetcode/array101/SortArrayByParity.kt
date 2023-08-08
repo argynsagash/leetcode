@@ -1,6 +1,7 @@
 package com.argynsagash.leetcode.array101
 
 class SortArrayByParity {
+
     fun sortArrayByParity(nums: IntArray): IntArray {
         var counter = 0
         var number: Int

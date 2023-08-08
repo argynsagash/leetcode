@@ -251,4 +251,17 @@ class Array101 {
             assertEquals(0, result[i] % 2)
         }
     }
+
+    @Test
+    fun heightChecker() {
+        val solution = HeightChecker()
+        var givenArray = intArrayOf(1, 1, 4, 2, 1, 3)
+        assertEquals(3, solution.heightChecker(givenArray))
+
+        givenArray = intArrayOf(5, 1, 2, 3, 4)
+        assertEquals(5, solution.heightChecker(givenArray))
+
+        givenArray = intArrayOf(1, 2, 3, 4, 5)
+        assertEquals(0, solution.heightChecker(givenArray))
+    }
 }
