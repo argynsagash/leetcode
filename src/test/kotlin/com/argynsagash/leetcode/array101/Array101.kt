@@ -264,4 +264,20 @@ class Array101 {
         givenArray = intArrayOf(1, 2, 3, 4, 5)
         assertEquals(0, solution.heightChecker(givenArray))
     }
+
+    @Test
+    fun thirdMax() {
+        val solution = ThirdMaximumNumber()
+        var givenArray = intArrayOf(3, 2, 1)
+        assertEquals(1, solution.thirdMax(givenArray))
+
+        givenArray = intArrayOf(1, 2)
+        assertEquals(2, solution.thirdMax(givenArray))
+
+        givenArray = intArrayOf(2, 2, 3, 1)
+        assertEquals(1, solution.thirdMax(givenArray))
+
+        givenArray = intArrayOf(1, 1, 2)
+        assertEquals(2, solution.thirdMax(givenArray))
+    }
 }
