@@ -280,4 +280,17 @@ class Array101 {
         givenArray = intArrayOf(1, 1, 2)
         assertEquals(2, solution.thirdMax(givenArray))
     }
+
+    @Test
+    fun findDisappearedNumbers() {
+        val solution = FindAllNumbersDisappearedInAnArray()
+        var giveArray = intArrayOf(4, 3, 2, 7, 8, 2, 3, 1)
+        var expectedListArray = listOf(5, 6)
+        assertEquals(expectedListArray, solution.findDisappearedNumbers(giveArray))
+
+        giveArray = intArrayOf(1, 1)
+        expectedListArray = listOf(2)
+        assertEquals(expectedListArray, solution.findDisappearedNumbers(giveArray))
+
+    }
 }
