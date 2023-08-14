@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import java.util.Arrays.sort
 
 
-class Array101 {
+class Array101Tests {
 
     @Test
     fun findMaxConsecutiveOnes() {
