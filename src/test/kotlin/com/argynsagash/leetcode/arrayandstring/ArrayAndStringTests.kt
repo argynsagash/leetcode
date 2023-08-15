@@ -23,4 +23,18 @@ class ArrayAndStringTests {
         givenArray = intArrayOf(0)
         assertEquals(0, solution.pivotIndexV3(givenArray))
     }
+
+    @Test
+    fun dominantIndex() {
+        val solution = LargestNumberAtLeastTwiceOfOthers()
+
+        var givenArray = intArrayOf(3, 6, 1, 0)
+        assertEquals(1, solution.dominantIndex(givenArray))
+
+        givenArray = intArrayOf(1, 2, 3, 4)
+        assertEquals(-1, solution.dominantIndex(givenArray))
+
+        givenArray = intArrayOf(0, 0, 2, 3)
+        assertEquals(-1, solution.dominantIndex(givenArray))
+    }
 }
