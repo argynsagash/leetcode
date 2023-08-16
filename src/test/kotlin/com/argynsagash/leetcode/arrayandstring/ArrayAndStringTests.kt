@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
+import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -36,5 +37,56 @@ class ArrayAndStringTests {
 
         givenArray = intArrayOf(0, 0, 2, 3)
         assertEquals(-1, solution.dominantIndex(givenArray))
+    }
+
+    @Test
+    fun plusOne() {
+        val solution = PlusOne()
+        var givenArray = intArrayOf(1, 2, 3)
+        var expectedArray = intArrayOf(1, 2, 4)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(9, 1, 1)
+        expectedArray = intArrayOf(9, 1, 2)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(4, 3, 2, 9)
+        expectedArray = intArrayOf(4, 3, 3, 0)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(4, 3, 2, 1)
+        expectedArray = intArrayOf(4, 3, 2, 2)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(9)
+        expectedArray = intArrayOf(1, 0)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
+        expectedArray = intArrayOf(9, 8, 7, 6, 5, 4, 3, 2, 1, 1)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+
+        givenArray = intArrayOf(
+            7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
+            7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6
+        )
+        expectedArray = intArrayOf(
+            7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
+            7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7
+        )
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(9, 9)
+        expectedArray = intArrayOf(1, 0, 0)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(8, 9, 9, 9)
+        expectedArray = intArrayOf(9, 0, 0, 0)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+
+        givenArray = intArrayOf(9, 8, 9)
+        expectedArray = intArrayOf(9, 9, 0)
+        assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
     }
 }
