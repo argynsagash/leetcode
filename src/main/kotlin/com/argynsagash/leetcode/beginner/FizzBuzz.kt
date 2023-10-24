@@ -1,6 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
-
+//Easy
 class FizzBuzz {
 
     fun fizzBuzz(n: Int): List<String> {

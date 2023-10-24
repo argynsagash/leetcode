@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class ReplaceElementsWithGreatestElementOnRightSide {
 
     fun replaceElements(arr: IntArray): IntArray {

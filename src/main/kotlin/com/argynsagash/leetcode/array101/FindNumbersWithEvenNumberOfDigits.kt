@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class FindNumbersWithEvenNumberOfDigits {
 
     fun findNumbers(nums: IntArray): Int {

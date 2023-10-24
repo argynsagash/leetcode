@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class MaxConsecutiveOnes {
 
     fun findMaxConsecutiveOnes(nums: IntArray): Int {

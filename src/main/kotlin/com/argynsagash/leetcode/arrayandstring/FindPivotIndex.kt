@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
+//Easy
 class FindPivotIndex {
 
     fun pivotIndex(nums: IntArray): Int {

@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
+//Easy
 class RunningSumOf1DArray {
 
     fun runningSum(nums: IntArray): IntArray {

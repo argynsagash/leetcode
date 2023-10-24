@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
+//Easy
 class RichestCustomerWealth {
 
     fun maximumWealth(accounts: Array<IntArray>): Int {

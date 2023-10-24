@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
+import com.argynsagash.leetcode.recursion.isPalindrome
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -68,12 +69,12 @@ class ArrayAndStringTests {
 
 
         givenArray = intArrayOf(
-            7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
-            7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6
+                7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
+                7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 6
         )
         expectedArray = intArrayOf(
-            7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
-            7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7
+                7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2, 8, 4, 3, 7, 9, 5, 7,
+                7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7
         )
         assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
 
@@ -88,5 +89,22 @@ class ArrayAndStringTests {
         givenArray = intArrayOf(9, 8, 9)
         expectedArray = intArrayOf(9, 9, 0)
         assertArrayEquals(expectedArray, solution.plusOneV2(givenArray))
+    }
+
+    @Test
+    fun findDiagonalOrder() {
+
+        println(isPalindrome("aad"))
+        val solution = DiagonalTraverse()
+
+        var givenArray: Array<IntArray> =
+                arrayOf(intArrayOf(1, 2, 3), intArrayOf(4, 5, 6), intArrayOf(7, 8, 9))
+        var expectedArray = intArrayOf(1, 2, 4, 7, 5, 3, 6, 8, 9)
+        assertArrayEquals(expectedArray, solution.findDiagonalOrder(givenArray))
+
+        givenArray =
+                arrayOf(intArrayOf(1, 2), intArrayOf(3, 4))
+        expectedArray = intArrayOf(1, 2, 3, 4)
+        assertArrayEquals(expectedArray, solution.findDiagonalOrder(givenArray))
     }
 }

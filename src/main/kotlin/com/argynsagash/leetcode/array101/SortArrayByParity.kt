@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class SortArrayByParity {
 
     fun sortArrayByParity(nums: IntArray): IntArray {

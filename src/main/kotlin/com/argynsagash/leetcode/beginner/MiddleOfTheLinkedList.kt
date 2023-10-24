@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
+//Easy
 class MiddleOfTheLinkedList {
 
     fun middleNode(head: ListNode?): ListNode? {

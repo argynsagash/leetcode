@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class RemoveElement {
 
     fun removeElement(nums: IntArray, num: Int): Int {

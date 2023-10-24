@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class ValidMountainArray {
     fun validMountainArray(arr: IntArray): Boolean {
         if (arr.size < 3) {

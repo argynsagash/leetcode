@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
+//Easy
 class NumberOfStepsToReduceANumberToZero {
 
     fun numberOfSteps(num: Int): Int {

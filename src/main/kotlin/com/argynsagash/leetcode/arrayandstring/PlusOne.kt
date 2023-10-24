@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
+//Easy
 class PlusOne {
 
     fun plusOne(digits: IntArray): IntArray {

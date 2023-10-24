@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
+//Easy
 class LargestNumberAtLeastTwiceOfOthers {
 
     fun dominantIndex(nums: IntArray): Int {

@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class CheckIfNAndItsDoubleExist {
 
     fun checkIfExist(arr: IntArray): Boolean {

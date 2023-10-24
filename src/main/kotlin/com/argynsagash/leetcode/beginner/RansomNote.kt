@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.beginner
 
+//Easy
 class RansomNote {
 
     fun canConstruct(ransomNote: String, magazine: String): Boolean {

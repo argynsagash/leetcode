@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class FindAllNumbersDisappearedInAnArray {
 
     fun findDisappearedNumbers(nums: IntArray): List<Int> {

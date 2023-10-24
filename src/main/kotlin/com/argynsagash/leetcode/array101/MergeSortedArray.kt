@@ -1,5 +1,6 @@
 package com.argynsagash.leetcode.array101
 
+//Easy
 class MergeSortedArray {
 
     fun merge(nums1: IntArray, m: Int, nums2: IntArray, n: Int) {
