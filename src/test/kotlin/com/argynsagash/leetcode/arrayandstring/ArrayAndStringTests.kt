@@ -1,6 +1,6 @@
 package com.argynsagash.leetcode.arrayandstring
 
-import com.argynsagash.leetcode.recursion.isPalindrome
+import com.argynsagash.leetcode.recursion.printTransforms
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -94,7 +94,6 @@ class ArrayAndStringTests {
     @Test
     fun findDiagonalOrder() {
 
-        println(isPalindrome("aad"))
         val solution = DiagonalTraverse()
 
         var givenArray: Array<IntArray> =
