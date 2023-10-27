@@ -50,6 +50,7 @@ fun getMax(arr: Array<Int>): Int {
     val currNum = arr[arr.size - 1]
     return max(currNum, maxInArr)
 }
+
 //version_2
 fun getMaxV2(arr: Array<Int>, size: Int): Int {
     //2-есть базовый случай
@@ -108,6 +109,7 @@ private fun isPalindrome(word: String, left: Int, right: Int): Boolean {
     //4-решить текущую задачу
     return isPalindrome(word, left + 1, right - 1)
 }
+
 fun isPalindrome(word: String): Boolean {
     return isPalindrome(word, 0, word.length - 1)
 }
@@ -127,7 +129,7 @@ fun isPalindrome(word: String): Boolean {
 //описание - напечатать все варианты прыжков лягушки до пола
 //аргументы - количество ступенек
 //возвращаемое значение - варианты прыжков
-//СЛОЖНОСТЬ: O(N'2' * 2'N')
+//СЛОЖНОСТЬ: O(N^2 * 2^N)
 private fun printPaths(pathCandidate: String, step: Int) {
     //1-определить все базовые случаи
     if (step == -1) return
@@ -140,6 +142,7 @@ private fun printPaths(pathCandidate: String, step: Int) {
     printPaths(pathCandidate + "1", step - 1)
     printPaths(pathCandidate + "2", step - 2)
 }
+
 fun printPaths(step: Int) {
     printPaths("", step)
 }
@@ -157,7 +160,7 @@ fun printPaths(step: Int) {
 //описание - напечатать все варианты пар круглых скобок
 //аргументы - количество скобок
 //возвращаемое значение - варианты пар
-//СЛОЖНОСТЬ: O(N'2' * 2'N')
+//СЛОЖНОСТЬ: O(N^2 * 2^N)
 private fun printParenthesis(parenCandidate: String, left: Int, right: Int) {
     //1-определить все базовые случаи
     if (left == -1 || left > right) return
@@ -170,6 +173,7 @@ private fun printParenthesis(parenCandidate: String, left: Int, right: Int) {
     printParenthesis(parenCandidate + "(", left - 1, right)
     printParenthesis(parenCandidate + ")", left, right - 1)
 }
+
 fun printParenthesis(parenthesisCount: Int) {
     printParenthesis("", parenthesisCount, parenthesisCount)
 }
@@ -188,7 +192,7 @@ fun printParenthesis(parenthesisCount: Int) {
 //описание - напечатать строки состоящие из всех вариантов регистров букв
 //аргументы - строка из цифр и букв
 //возвращаемое значение - варианты регистров букв
-//СЛОЖНОСТЬ: O(N'2' * 2'N')
+//СЛОЖНОСТЬ: O(N^2 * 2^N)
 private fun printTransforms(word: String, chars: String) {
     //1-определить все базовые случаи
     if (chars.isEmpty()) {
@@ -207,12 +211,13 @@ private fun printTransforms(word: String, chars: String) {
         printTransforms(word + c.uppercase(), trimmedChars)
     }
 }
+
 fun printTransforms(word: String) {
     printTransforms("", word)
 }
 
 /**
- * Задача 9
+ * Задача 8
  *
  * Напишите функцию для замены всех пробелов в строке на 20%.
  * На вход функции передается два параметра:
@@ -237,4 +242,40 @@ private fun replaceSpaces(word: String, size: Int) {
 //    }
     //3-посчитать количество стрелок в дереве
     //4-определить задачу меньшего размера
+}
+
+/**
+ * Задача 9
+ *
+ * Напишите функцию, которая копирует все символы из строки в массив
+ *
+ * Пример
+ * input: "ABC"
+ * output: ["A","B","C"]
+ */
+//1-описание
+//описание - копировать символы из строки в массив
+//аргументы - строка
+//возвращаемое значение - массив
+//СЛОЖНОСТЬ:
+fun moveStrToArr(letters: MutableList<Char>, str: String) {
+    //1-определить все базовые случаи
+    if (str.isEmpty()) return
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+    val letter: Char = str[0]
+    letters.add(letter)
+    val trimmedStr = str.substring(1)
+    moveStrToArr(letters, trimmedStr)
+}
+
+//ОПТИМИЗАЦИЯ КОДА
+fun moveStrToArr(letters: MutableList<Char>, startIndex: Int, str: String) {
+    //1-определить все базовые случаи
+    if (startIndex == str.length) return
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+    val letter: Char = str[startIndex]
+    letters.add(letter)
+    moveStrToArr(letters, startIndex + 1, str)
 }
