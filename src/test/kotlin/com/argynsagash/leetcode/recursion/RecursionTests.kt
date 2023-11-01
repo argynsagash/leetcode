@@ -16,6 +16,8 @@ class RecursionTests {
 
         expectedArray = mutableListOf("()")
         Assertions.assertEquals(expectedArray, solution.generateParenthesis(1))
+
+        assertEquals(2, solution.getValidParenPairsCount(2))
     }
 
     @Test
@@ -49,5 +51,22 @@ class RecursionTests {
         expectedArray = mutableListOf("3z4", "3Z4")
         resultArray = solution.letterCasePermutation("3z4")
         assertEquals(expectedArray, resultArray)
+    }
+
+    @Test
+    fun findTargetSumWays() {
+
+        val solution = TargetSum()
+
+        /**
+         * Explanation: There are 5 ways to assign symbols to make the sum of nums be target 3.
+         * -1 + 1 + 1 + 1 + 1 = 3
+         * +1 - 1 + 1 + 1 + 1 = 3
+         * +1 + 1 - 1 + 1 + 1 = 3
+         * +1 + 1 + 1 - 1 + 1 = 3
+         * +1 + 1 + 1 + 1 - 1 = 3
+         */
+        assertEquals(5, solution.findTargetSumWays(intArrayOf(1, 1, 1, 1, 1), 3))
+        assertEquals(2, solution.findTargetSumWays(intArrayOf(2, 3, 2, 1), 4))
     }
 }

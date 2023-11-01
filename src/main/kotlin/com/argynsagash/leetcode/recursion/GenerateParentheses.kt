@@ -25,4 +25,14 @@ class GenerateParentheses {
         generateParenthesis(parenCandidate + "(", left - 1, right, result)
         generateParenthesis(parenCandidate + ")", left, right - 1, result)
     }
+
+    fun getValidParenPairsCount(parenthesisCount: Int): Int {
+        return getValidParenPairsCount(parenthesisCount, parenthesisCount)
+    }
+
+    private fun getValidParenPairsCount(left: Int, right: Int): Int {
+        if (left == -1 || left > right) return 0
+        if (left == 0 && right == 0) return 1
+        return getValidParenPairsCount(left - 1, right) + getValidParenPairsCount(left, right - 1)
+    }
 }
