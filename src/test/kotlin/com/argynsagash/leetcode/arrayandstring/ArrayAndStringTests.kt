@@ -1,5 +1,7 @@
 package com.argynsagash.leetcode.arrayandstring
 
+import com.argynsagash.leetcode.recursion.printBin
+import com.argynsagash.leetcode.recursion.printBinV2
 import com.argynsagash.leetcode.recursion.printTransforms
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -94,6 +96,7 @@ class ArrayAndStringTests {
     @Test
     fun findDiagonalOrder() {
 
+        printBinV2(mutableListOf(), 3)
         val solution = DiagonalTraverse()
 
         var givenArray: Array<IntArray> =

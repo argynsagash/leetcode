@@ -69,4 +69,14 @@ class RecursionTests {
         assertEquals(5, solution.findTargetSumWays(intArrayOf(1, 1, 1, 1, 1), 3))
         assertEquals(2, solution.findTargetSumWays(intArrayOf(2, 3, 2, 1), 4))
     }
+
+    //MAXIMUM PRODUCT OF THE LENGTH OF TWO PALINDROMIC SUBSEQUENCES
+    @Test
+    fun maxProduct() {
+        assertEquals(9, maxProduct("leetcodecom"))
+        assertEquals(1, maxProduct("bb"))
+        assertEquals(25, maxProduct("accbcaxxcxx"))
+
+    }
+
 }

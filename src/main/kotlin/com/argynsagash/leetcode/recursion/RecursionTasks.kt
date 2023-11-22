@@ -279,3 +279,142 @@ fun moveStrToArr(letters: MutableList<Char>, startIndex: Int, str: String) {
     letters.add(letter)
     moveStrToArr(letters, startIndex + 1, str)
 }
+
+/**
+ * Задача 10
+ *
+ * Напишите функцию, поиска всех двоичных чисел длиной 3 бита
+ *
+ * Пример
+ * input:
+ * output:
+ */
+//1-описание
+//описание - копировать символы из строки в массив
+//аргументы - строка
+//возвращаемое значение - массив
+//СЛОЖНОСТЬ: O(N^2 * 2^N)
+fun printBin(size: Int) {
+    printBin("", size)
+}
+
+private fun printBin(bin: String, size: Int) {
+    //1-определить все базовые случаи
+    if (bin.length == size) {
+        println(bin)
+        return
+    }
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+    printBin(bin + "0", size)
+    printBin(bin + "1", size)
+}
+
+//ЧТО НА САМОМ ДЕЛЕ ПРОИСХОДИТ СО STRING-ом
+fun printBin(bin: MutableList<Char>, size: Int) {
+    //1-определить все базовые случаи
+    if (bin.size == size) {
+        println(bin)
+        return
+    }
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+    var binCopy: MutableList<Char> = bin.toMutableList()
+    binCopy.add('0')
+    printBin(binCopy, size)
+
+    binCopy = bin.toMutableList()
+    binCopy.add('1')
+    printBin(binCopy, size)
+}
+
+//ОПТИМИЗАЦИЯ КОДА
+//version_2
+fun printBinV2(bin: MutableList<Char>, size: Int) {
+    //1-определить все базовые случаи
+    if (bin.size == size) {
+        println(bin)
+        return
+    }
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+    bin.add('0')
+    printBin(bin, size)
+    //bin.removeAt(bin.size - 1)
+    bin.removeLast()
+
+    //сразу же после завершения рекурсии удаляем добавленный элемент
+    //это позволит отказаться от копии массива
+    bin.add('1')
+    printBin(bin, size)
+    bin.removeLast()
+
+}
+
+/**
+ * [MAXIMUM PRODUCT OF THE LENGTH OF TWO PALINDROMIC SUBSEQUENCES](https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/)
+ *
+ * Given a string s, find two disjoint palindromic subsequences of s such that the product of their lengths is maximized. The two subsequences are disjoint if they do not both pick a character at the same index.
+ *
+ * Return the maximum possible product of the lengths of the two palindromic subsequences.
+ *
+ * A subsequence is a string that can be derived from another string by deleting some or no characters without changing the order of the remaining characters. A string is palindromic if it reads the same forward and backward.
+ *
+ * Example 1
+ * * Input: s = "leetcodecom"
+ *
+ * * Output: 9
+ *
+ * * Explanation: An optimal solution is to choose "ete" for the 1st subsequence and "cdc" for the 2nd subsequence.
+ * The product of their lengths is: 3 * 3 = 9.
+ *
+ * Example 2:
+ *
+ * * Input: s = "bb"
+ * * Output: 1
+ * * Explanation: An optimal solution is to choose "b" (the first character) for the 1st subsequence and "b" (the second character) for the 2nd subsequence.
+ * The product of their lengths is: 1 * 1 = 1.
+ *
+ * Example 3:
+ *
+ * * Input: s = "accbcaxxcxx"
+ * * Output: 25
+ * * Explanation: An optimal solution is to choose "accca" for the 1st subsequence and "xxcxx" for the 2nd subsequence.
+ * The product of their lengths is: 5 * 5 = 25.
+ *
+ * Constraints:
+ *
+ * * 2 <= s.length <= 12
+ * * s consists of lowercase English letters only.
+ */
+//СЛОЖНОСТЬ: O(3^N)
+var palindromeMaxProduct = 0
+fun maxProduct(s: String): Int {
+    palindromeMaxProduct = 0
+    maxProduct("", "", 0, s)
+    return palindromeMaxProduct
+}
+
+private fun maxProduct(cand1: String, cand2: String, startIndex: Int, str: String) {
+    if (startIndex == str.length) {
+        if (isPalindrome(cand1) && isPalindrome(cand2))
+            palindromeMaxProduct = Math.max(palindromeMaxProduct, cand1.length * cand2.length)
+        return
+    }
+    val letter = str[startIndex]
+    maxProduct(cand1 + letter, cand2, startIndex + 1, str)
+    maxProduct(cand1, cand2 + letter, startIndex + 1, str)
+    maxProduct(cand1, cand2, startIndex + 1, str)
+}
+
+private fun isPalindromeV2(word: String): Boolean {
+    var start = 0
+    var end = word.length - 1;
+    while (start < end) {
+        if (word[start] != word[end]) return false
+        start += 1
+        end -= 1
+    }
+    return true
+}
+
