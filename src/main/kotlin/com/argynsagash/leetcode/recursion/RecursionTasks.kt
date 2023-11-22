@@ -388,23 +388,23 @@ fun printBinV2(bin: MutableList<Char>, size: Int) {
  * * s consists of lowercase English letters only.
  */
 //СЛОЖНОСТЬ: O(3^N)
-var palindromeMaxProduct = 0
+//var palindromeMaxProduct = 0
 fun maxProduct(s: String): Int {
-    palindromeMaxProduct = 0
-    maxProduct("", "", 0, s)
-    return palindromeMaxProduct
+    val palindromeMaxProduct = intArrayOf(0)
+    maxProduct("", "", 0, s, palindromeMaxProduct)
+    return palindromeMaxProduct[0]
 }
 
-private fun maxProduct(cand1: String, cand2: String, startIndex: Int, str: String) {
+private fun maxProduct(cand1: String, cand2: String, startIndex: Int, str: String, palindromeMaxProduct: IntArray) {
     if (startIndex == str.length) {
         if (isPalindrome(cand1) && isPalindrome(cand2))
-            palindromeMaxProduct = Math.max(palindromeMaxProduct, cand1.length * cand2.length)
+            palindromeMaxProduct[0] = palindromeMaxProduct[0].coerceAtLeast(cand1.length * cand2.length)
         return
     }
     val letter = str[startIndex]
-    maxProduct(cand1 + letter, cand2, startIndex + 1, str)
-    maxProduct(cand1, cand2 + letter, startIndex + 1, str)
-    maxProduct(cand1, cand2, startIndex + 1, str)
+    maxProduct(cand1 + letter, cand2, startIndex + 1, str, palindromeMaxProduct)
+    maxProduct(cand1, cand2 + letter, startIndex + 1, str, palindromeMaxProduct)
+    maxProduct(cand1, cand2, startIndex + 1, str, palindromeMaxProduct)
 }
 
 private fun isPalindromeV2(word: String): Boolean {
