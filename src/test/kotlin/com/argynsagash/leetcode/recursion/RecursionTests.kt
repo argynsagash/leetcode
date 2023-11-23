@@ -76,6 +76,17 @@ class RecursionTests {
         assertEquals(9, maxProduct("leetcodecom"))
         assertEquals(1, maxProduct("bb"))
         assertEquals(25, maxProduct("accbcaxxcxx"))
+        assertEquals(6, maxProduct("bxbax"))
+
+    }
+
+    //CLOSEST DESSERT COST
+    @Test
+    fun closestCost(){
+        assertEquals(10, closestCost(intArrayOf(1,7),intArrayOf(3,4),10))
+        assertEquals(17, closestCost(intArrayOf(2,3),intArrayOf(4,5,100),18))
+        assertEquals(8, closestCost(intArrayOf(3,10),intArrayOf(2,5),9))
+        assertEquals(10, closestCost(intArrayOf(10),intArrayOf(1),1))
 
     }
 
