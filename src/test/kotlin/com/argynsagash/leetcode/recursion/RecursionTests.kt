@@ -2,6 +2,7 @@ package com.argynsagash.leetcode.recursion
 
 import com.argynsagash.leetcode.arrayandstring.DiagonalTraverse
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -12,10 +13,10 @@ class RecursionTests {
         val solution = GenerateParentheses()
 
         var expectedArray = mutableListOf("((()))", "(()())", "(())()", "()(())", "()()()")
-        Assertions.assertEquals(expectedArray, solution.generateParenthesis(3))
+        assertEquals(expectedArray, solution.generateParenthesis(3))
 
         expectedArray = mutableListOf("()")
-        Assertions.assertEquals(expectedArray, solution.generateParenthesis(1))
+        assertEquals(expectedArray, solution.generateParenthesis(1))
 
         assertEquals(2, solution.getValidParenPairsCount(2))
     }
@@ -82,12 +83,20 @@ class RecursionTests {
 
     //CLOSEST DESSERT COST
     @Test
-    fun closestCost(){
-        assertEquals(10, closestCost(intArrayOf(1,7),intArrayOf(3,4),10))
-        assertEquals(17, closestCost(intArrayOf(2,3),intArrayOf(4,5,100),18))
-        assertEquals(8, closestCost(intArrayOf(3,10),intArrayOf(2,5),9))
-        assertEquals(10, closestCost(intArrayOf(10),intArrayOf(1),1))
+    fun closestCost() {
+        assertEquals(10, closestCost(intArrayOf(1, 7), intArrayOf(3, 4), 10))
+        assertEquals(17, closestCost(intArrayOf(2, 3), intArrayOf(4, 5, 100), 18))
+        assertEquals(8, closestCost(intArrayOf(3, 10), intArrayOf(2, 5), 9))
+        assertEquals(10, closestCost(intArrayOf(10), intArrayOf(1), 1))
 
+    }
+
+    //LETTER COMBINATIONS OF A PHONE NUMBER
+    @Test
+    fun letterCombinations() {
+        assertEquals(listOf("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"), letterCombinations("23"))
+        assertEquals(emptyList<String>(), letterCombinations(""))
+        assertEquals(listOf("a", "b", "c"), letterCombinations("2"))
     }
 
 }

@@ -1,7 +1,9 @@
 package com.argynsagash.leetcode.recursion
 
+import java.lang.StringBuilder
 import kotlin.math.abs
 import kotlin.math.max
+import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 /**
  * Задача 1
@@ -421,6 +423,8 @@ private fun isPalindromeV2(word: String): Boolean {
 /**
  * [CLOSEST DESSERT COST](https://leetcode.com/problems/closest-dessert-cost/)
  *
+ * Medium
+ *
  * You would like to make dessert and are preparing to buy the ingredients. You have n ice cream base flavors and m types of toppings to choose from. You must follow these rules when making your dessert:
  *
  * There must be exactly one ice cream base.
@@ -488,4 +492,94 @@ private fun getClosestPrice(desertPrice: Int, startIndex: Int, closestPrice: Int
     getClosestPrice(desertPrice + 1 * toppingCost[startIndex], startIndex + 1, closestPrice, toppingCost, targetPrice)
     getClosestPrice(desertPrice + 2 * toppingCost[startIndex], startIndex + 1, closestPrice, toppingCost, targetPrice)
 }
+
+/**
+ * [LETTER COMBINATIONS OF A PHONE NUMBER](https://leetcode.com/problems/letter-combinations-of-a-phone-number/)
+ *
+ * Medium
+ *
+ * Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+ *
+ * A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+ *
+ * Example 1:
+ *
+ * * Input: digits = "23"
+ * * Output: | "ad","ae","af","bd","be","bf","cd","ce","cf" |
+ *
+ * Example 2:
+ *
+ * * Input: digits = ""
+ * * Output: | |
+ *
+ * Example 3:
+ *
+ * * Input: digits = "2"
+ * * Output: |"a","b","c"|
+ *
+ * Constraints:
+ *
+ * * 0 <= digits.length <= 4
+ * * digits |i| is a digit in the range |'2', '9'|.
+ */
+//СЛОЖНОСТЬ: O(N^2*4^N)
+fun letterCombinations(digits: String): List<String> {
+    val words = mutableListOf<String>()
+    if (digits.isEmpty()) return words
+    getWords("", 0, createChars(digits), words)
+    return words
+}
+
+fun createChars(digits: String): Array<String> {
+    val keyboard = arrayOf("", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz")
+    val chars = Array(digits.length) { "" }
+    for (i in digits.indices) {
+        //Самый быстрый способ привести строку в цифру
+        //Для символа '2' в Unicode его код равен 50
+        //Для символа '0' в Unicode его код равен 48
+        //На выходе получаем цифру 50-48 = 2
+        val digit: Int = digits[i] - '0'
+        chars[i] = keyboard[digit]
+    }
+    return chars
+}
+
+fun getWords(word: String, wordIndex: Int, chars: Array<String>, words: MutableList<String>) {
+    if (wordIndex == chars.size) {
+        words.add(word);
+        return
+    }
+    for (i in chars[wordIndex].indices) {
+        val letter = chars[wordIndex][i]
+        getWords(word + letter, wordIndex + 1, chars, words)
+    }
+}
+
+//ОПТИМИЗАЦИЯ
+//СЛОЖНОСТЬ: O(4^N)
+fun letterCombinationsV2(digits: String): List<String> {
+    val words = mutableListOf<String>()
+    if (digits.isEmpty()) return words
+    val keyboard = arrayOf("", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz")
+    getWords(StringBuilder(digits.length), 0, digits, keyboard, words)
+    return words
+}
+
+fun getWords(word: StringBuilder, digitIndex: Int, digits: String, keyboard: Array<String>, words: MutableList<String>) {
+    if (digitIndex == digits.length) {
+        words.add(word.toString());
+        return
+    }
+    val digit = Character.getNumericValue(digits[digitIndex])
+    val letters = keyboard[digit]
+
+    for (i in letters.indices) {
+        val letter = letters[i]
+        word.append(letter)
+        getWords(word, digitIndex + 1, digits, keyboard, words)
+        word.deleteCharAt(word.length - 1)
+    }
+}
+
+
 
