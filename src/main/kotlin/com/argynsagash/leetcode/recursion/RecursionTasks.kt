@@ -355,6 +355,46 @@ fun printBinV2(bin: MutableList<Char>, size: Int) {
 }
 
 /**
+ * ЗАДАЧА 11
+ *
+ * Дано число num. Из него можно вычитать 3 и 5 сколько угодно раз. Докажите, что выполняя вычитание, в конце концов
+ * из num можно или нельзя получить число value
+ *
+ * Пример 1:
+ * * Input: num = 7, value = -1
+ * * Output: true
+ * * Explanation: 7 - 3 - 5 = -1
+ *
+ * Пример 2:
+ * * Input: num = 6, value = -1
+ * * Output: false
+ * * Explanation: 6 - 3 - 5 = -2 или 6 - 5 - 3 = -2
+ */
+//1-описание
+//описание - Возможно ли получить value вычитая 3 и 5 из num
+//аргументы - число
+//возвращаемое значение - булева
+//СЛОЖНОСТЬ:
+
+fun valueExists(num: Int, value: Int): Boolean {
+    //1-определить все базовые случаи
+    if (num == value) return true
+    if (num < 0) return false
+    //3-посчитать количество стрелок в дереве
+    //4-определить задачу меньшего размера
+
+
+    //val leftResult = valueExists(num-3, value)
+    //if (leftResult) return true
+    //val rightResult = valueExists(num-5, value)
+    //if (rightResult) return true
+    //return false
+    return valueExists(num - 3, value) || valueExists(num - 5, value)
+    //Данный подход называется обрезкой(англ. pruning) дерева рекурсивных вызовов
+    //Так как мы нашли первый вариант дальше не идем по рекурсии
+}
+
+/**
  * [MAXIMUM PRODUCT OF THE LENGTH OF TWO PALINDROMIC SUBSEQUENCES](https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/)
  *
  * Given a string s, find two disjoint palindromic subsequences of s such that the product of their lengths is maximized. The two subsequences are disjoint if they do not both pick a character at the same index.
@@ -530,7 +570,7 @@ fun letterCombinations(digits: String): List<String> {
     return words
 }
 
-fun createChars(digits: String): Array<String> {
+private fun createChars(digits: String): Array<String> {
     val keyboard = arrayOf("", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz")
     val chars = Array(digits.length) { "" }
     for (i in digits.indices) {
@@ -544,7 +584,7 @@ fun createChars(digits: String): Array<String> {
     return chars
 }
 
-fun getWords(word: String, wordIndex: Int, chars: Array<String>, words: MutableList<String>) {
+private fun getWords(word: String, wordIndex: Int, chars: Array<String>, words: MutableList<String>) {
     if (wordIndex == chars.size) {
         words.add(word);
         return
@@ -565,7 +605,7 @@ fun letterCombinationsV2(digits: String): List<String> {
     return words
 }
 
-fun getWords(word: StringBuilder, digitIndex: Int, digits: String, keyboard: Array<String>, words: MutableList<String>) {
+private fun getWords(word: StringBuilder, digitIndex: Int, digits: String, keyboard: Array<String>, words: MutableList<String>) {
     if (digitIndex == digits.length) {
         words.add(word.toString());
         return
@@ -579,6 +619,56 @@ fun getWords(word: StringBuilder, digitIndex: Int, digits: String, keyboard: Arr
         getWords(word, digitIndex + 1, digits, keyboard, words)
         word.deleteCharAt(word.length - 1)
     }
+}
+
+/**
+ * [MATCHSTICKS TO SQUARE](https://leetcode.com/problems/matchsticks-to-square/)
+ *
+ * Medium
+ *
+ * You are given an integer array matchsticks where matchsticks|i| is the length of the ith matchstick.
+ * You want to use all the matchsticks to make one square. You should not break any stick, but you can link them up,
+ * and each matchstick must be used exactly one time.
+ *
+ * Return true if you can make this square and false otherwise.
+ *
+ * Example 1:
+ *
+ * * Input: matchsticks = |1,1,2,2,2|
+ * * Output: true
+ * * Explanation: You can form a square with length 2, one side of the square came two sticks with length 1.
+ *
+ * Example 2:
+ *
+ * * Input: matchsticks = |3,3,3,3,4|
+ * * Output: false
+ * * Explanation: You cannot find a way to form a square with all the matchsticks.
+ *
+ *
+ * * Constraints:
+ *
+ * * 1 <= matchsticks.length <= 15
+ * * 1 <= matchsticks|i| <= 108
+ */
+//СЛОЖНОСТЬ: O(4^N)
+fun makesquare(matchsticks: IntArray): Boolean {
+    val sortedMatchsticks = matchsticks.sortedDescending().toIntArray()
+    val perimeter = matchsticks.sum()
+    if (perimeter % 4 != 0) return false
+    return canCreateSquare(IntArray(4), 0, sortedMatchsticks, perimeter / 4)
+}
+
+private fun canCreateSquare(squareSidesLength: IntArray, startIndex: Int, matchsticks: IntArray, sideLength: Int): Boolean {
+    if (startIndex == matchsticks.size) return true
+    for (i in squareSidesLength.indices) {
+        if (i > 0 && squareSidesLength[i - 1] == squareSidesLength[i]) continue
+        if (squareSidesLength[i] + matchsticks[startIndex] > sideLength) continue
+
+        squareSidesLength[i] += matchsticks[startIndex]
+        if (canCreateSquare(squareSidesLength, startIndex + 1, matchsticks, sideLength)) return true
+        squareSidesLength[i] -= matchsticks[startIndex]
+    }
+    return false
 }
 
 

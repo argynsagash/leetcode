@@ -99,4 +99,11 @@ class RecursionTests {
         assertEquals(listOf("a", "b", "c"), letterCombinations("2"))
     }
 
+    //MATCHSTICKS TO SQUARE
+    @Test
+    fun makesquare(){
+        assertEquals(true, makesquare(intArrayOf(1,1,2,2,2)))
+        assertEquals(false, makesquare(intArrayOf(3,3,4,3,1)))
+    }
+
 }
