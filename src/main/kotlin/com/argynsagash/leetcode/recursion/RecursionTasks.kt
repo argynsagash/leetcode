@@ -3,7 +3,6 @@ package com.argynsagash.leetcode.recursion
 import java.lang.StringBuilder
 import kotlin.math.abs
 import kotlin.math.max
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 /**
  * Задача 1
@@ -375,7 +374,6 @@ fun printBinV2(bin: MutableList<Char>, size: Int) {
 //аргументы - число
 //возвращаемое значение - булева
 //СЛОЖНОСТЬ:
-
 fun valueExists(num: Int, value: Int): Boolean {
     //1-определить все базовые случаи
     if (num == value) return true
@@ -393,6 +391,42 @@ fun valueExists(num: Int, value: Int): Boolean {
     //Данный подход называется обрезкой(англ. pruning) дерева рекурсивных вызовов
     //Так как мы нашли первый вариант дальше не идем по рекурсии
 }
+
+/**
+ * ЗАДАЧА 11
+ *
+ * Дано строка состоящая из уникальных букв. Создайте все возможные слова из этих букв, т.е.
+ * создайте перестановки.
+ *
+ * Пример 1:
+ * * Input: abc
+ * * Output: abc, acb, bac, bca, cab, cba
+ */
+//1-описание
+//описание - Создать слова из уникальных букв
+//аргументы - буквы
+//возвращаемое значение - список слов
+//СЛОЖНОСТЬ: O(N^2 * N)
+fun printPermutations(chars: String) {
+    printPermutations("", chars)
+}
+
+private fun printPermutations(word: String, chars: String) {
+    if (chars.isEmpty()) {
+        println(word)
+        return
+    }
+    for (i in chars.indices) {
+        val c = chars[i]
+        val trimmedChars = removeIthChar(chars, i)
+        printPermutations(word + c, trimmedChars)
+    }
+}
+
+private fun removeIthChar(chars: String, index: Int): String {
+    return chars.substring(0, index) + chars.substring(index + 1)
+}
+
 
 /**
  * [MAXIMUM PRODUCT OF THE LENGTH OF TWO PALINDROMIC SUBSEQUENCES](https://leetcode.com/problems/maximum-product-of-the-length-of-two-palindromic-subsequences/)
@@ -651,25 +685,79 @@ private fun getWords(word: StringBuilder, digitIndex: Int, digits: String, keybo
  * * 1 <= matchsticks|i| <= 108
  */
 //СЛОЖНОСТЬ: O(4^N)
-fun makesquare(matchsticks: IntArray): Boolean {
+fun makeSquare(matchsticks: IntArray): Boolean {
     val sortedMatchsticks = matchsticks.sortedDescending().toIntArray()
     val perimeter = matchsticks.sum()
     if (perimeter % 4 != 0) return false
-    return canCreateSquare(IntArray(4), 0, sortedMatchsticks, perimeter / 4)
+    return makeSquare(IntArray(4), 0, sortedMatchsticks, perimeter / 4)
 }
 
-private fun canCreateSquare(squareSidesLength: IntArray, startIndex: Int, matchsticks: IntArray, sideLength: Int): Boolean {
+private fun makeSquare(squareSidesLength: IntArray, startIndex: Int, matchsticks: IntArray, sideLength: Int): Boolean {
     if (startIndex == matchsticks.size) return true
     for (i in squareSidesLength.indices) {
         if (i > 0 && squareSidesLength[i - 1] == squareSidesLength[i]) continue
         if (squareSidesLength[i] + matchsticks[startIndex] > sideLength) continue
 
         squareSidesLength[i] += matchsticks[startIndex]
-        if (canCreateSquare(squareSidesLength, startIndex + 1, matchsticks, sideLength)) return true
+        if (makeSquare(squareSidesLength, startIndex + 1, matchsticks, sideLength)) return true
         squareSidesLength[i] -= matchsticks[startIndex]
     }
     return false
 }
 
+/**
+ * [PERMUTATIONS](https://leetcode.com/problems/permutations/)
+ *
+ * Medium
+ *
+ * Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+ *
+ * Example 1:
+ *
+ *      Input: nums = [1,2,3]
+ *      Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+ *
+ *  Example 2:
+ *
+ *      Input: nums = [0,1]
+ *      Output: [[0,1],[1,0]]
+ *
+ * Example 3:
+ *
+ *      Input: nums = [1]
+ *      Output: [[1]]
+ *
+ * Constraints:
+ *
+ *      1 <= nums.length <= 6
+ *      -10 <= nums[i] <= 10
+ *      All the integers of nums are unique.
+ */
+//СЛОЖНОСТЬ: O(N*N!)
+fun permute(nums: IntArray): List<List<Int>> {
+    val result = mutableListOf<List<Int>>()
+    getPermutations(0, nums, result)
+    return result
+}
+
+private fun getPermutations(startIndex: Int, nums: IntArray, permutations: MutableList<List<Int>>) {
+    if (startIndex == nums.size) {
+        val permutation = mutableListOf<Int>()
+        for (num in nums) permutation.add(num)
+        permutations.add(permutation)
+    }
+    for (i in startIndex until nums.size) {
+        swap(nums, startIndex, i)
+        getPermutations(startIndex + 1, nums, permutations)
+        swap(nums, startIndex, i)
+
+    }
+}
+
+private fun swap(arr: IntArray, a: Int, b: Int) {
+    val temp = arr[a]
+    arr[a] = arr[b]
+    arr[b] = temp
+}
 
 

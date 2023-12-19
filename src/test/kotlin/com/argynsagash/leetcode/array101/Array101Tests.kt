@@ -24,12 +24,12 @@ class Array101Tests {
 
     @Test
     fun findNumbers() {
-        val solution = FindNumbersWithEvenNumberOfDigits()
+
         val arrayOne = intArrayOf(12, 345, 2, 6, 7896)
         val arrayTwo = intArrayOf(555, 901, 482, 1771)
 
-        assertEquals(2, solution.findNumbers(arrayOne))
-        assertEquals(1, solution.findNumbers(arrayTwo))
+        assertEquals(2, com.argynsagash.leetcode.findNumbers(arrayOne))
+        assertEquals(1, com.argynsagash.leetcode.findNumbers(arrayTwo))
     }
 
     @Test
@@ -49,7 +49,6 @@ class Array101Tests {
     @Test
     fun duplicateZeros() {
 
-        val solution = DuplicateZeros()
 
         val givenArrayOne = intArrayOf(1, 0, 2, 3, 0, 4, 5, 0)
         val givenArrayTwo = intArrayOf(1, 2, 3)
@@ -59,13 +58,13 @@ class Array101Tests {
         val expectedArrayTwo = intArrayOf(1, 2, 3)
         val expectedArrayThree = intArrayOf(1, 0)
 
-        solution.duplicateZeros(givenArrayOne)
+        com.argynsagash.leetcode.duplicateZeros(givenArrayOne)
         assertArrayEquals(expectedArrayOne, givenArrayOne)
 
-        solution.duplicateZeros(givenArrayTwo)
+        com.argynsagash.leetcode.duplicateZeros(givenArrayTwo)
         assertArrayEquals(expectedArrayTwo, givenArrayTwo)
 
-        solution.duplicateZeros(givenArrayThree)
+        com.argynsagash.leetcode.duplicateZeros(givenArrayThree)
         assertArrayEquals(expectedArrayThree, givenArrayThree)
     }
 
@@ -143,18 +142,17 @@ class Array101Tests {
 
     @Test
     fun checkIfExist() {
-        val solution = CheckIfNAndItsDoubleExist()
         var givenArray = intArrayOf(10, 2, 5, 3)
-        assertEquals(true, solution.checkIfExist(givenArray))
+        assertEquals(true, com.argynsagash.leetcode.checkIfExist(givenArray))
 
         givenArray = intArrayOf(3, 1, 7, 11)
-        assertEquals(false, solution.checkIfExist(givenArray))
+        assertEquals(false, com.argynsagash.leetcode.checkIfExist(givenArray))
 
         givenArray = intArrayOf(7, 1, 14, 11)
-        assertEquals(true, solution.checkIfExist(givenArray))
+        assertEquals(true, com.argynsagash.leetcode.checkIfExist(givenArray))
 
         givenArray = intArrayOf(-2, 0, 10, -19, 4, 6, -8)
-        assertEquals(false, solution.checkIfExist(givenArray))
+        assertEquals(false, com.argynsagash.leetcode.checkIfExist(givenArray))
 
 
     }
@@ -254,15 +252,14 @@ class Array101Tests {
 
     @Test
     fun heightChecker() {
-        val solution = HeightChecker()
         var givenArray = intArrayOf(1, 1, 4, 2, 1, 3)
-        assertEquals(3, solution.heightChecker(givenArray))
+        assertEquals(3, com.argynsagash.leetcode.heightChecker(givenArray))
 
         givenArray = intArrayOf(5, 1, 2, 3, 4)
-        assertEquals(5, solution.heightChecker(givenArray))
+        assertEquals(5, com.argynsagash.leetcode.heightChecker(givenArray))
 
         givenArray = intArrayOf(1, 2, 3, 4, 5)
-        assertEquals(0, solution.heightChecker(givenArray))
+        assertEquals(0, com.argynsagash.leetcode.heightChecker(givenArray))
     }
 
     @Test
@@ -283,14 +280,14 @@ class Array101Tests {
 
     @Test
     fun findDisappearedNumbers() {
-        val solution = FindAllNumbersDisappearedInAnArray()
+
         var giveArray = intArrayOf(4, 3, 2, 7, 8, 2, 3, 1)
         var expectedListArray = listOf(5, 6)
-        assertEquals(expectedListArray, solution.findDisappearedNumbers(giveArray))
+        assertEquals(expectedListArray, com.argynsagash.leetcode.findDisappearedNumbers(giveArray))
 
         giveArray = intArrayOf(1, 1)
         expectedListArray = listOf(2)
-        assertEquals(expectedListArray, solution.findDisappearedNumbers(giveArray))
+        assertEquals(expectedListArray, com.argynsagash.leetcode.findDisappearedNumbers(giveArray))
 
     }
 }

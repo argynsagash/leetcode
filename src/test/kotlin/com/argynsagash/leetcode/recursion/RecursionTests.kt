@@ -1,8 +1,6 @@
 package com.argynsagash.leetcode.recursion
 
-import com.argynsagash.leetcode.arrayandstring.DiagonalTraverse
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Assertions.assertArrayEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -101,9 +99,32 @@ class RecursionTests {
 
     //MATCHSTICKS TO SQUARE
     @Test
-    fun makesquare(){
-        assertEquals(true, makesquare(intArrayOf(1,1,2,2,2)))
-        assertEquals(false, makesquare(intArrayOf(3,3,4,3,1)))
+    fun makesquare() {
+        assertEquals(true, makeSquare(intArrayOf(1, 1, 2, 2, 2)))
+        assertEquals(false, makeSquare(intArrayOf(3, 3, 4, 3, 1)))
+    }
+
+    //PERMUTATIONS
+    @Test
+    fun permute() {
+        var expectedList = listOf(
+                listOf(1, 2, 3),
+                listOf(1, 3, 2),
+                listOf(2, 1, 3),
+                listOf(2, 3, 1),
+                listOf(3, 1, 2),
+                listOf(3, 2, 1)
+        )
+        var actualList = permute(intArrayOf(1, 2, 3))
+        assertThat(actualList).containsExactlyInAnyOrderElementsOf(expectedList)
+
+        expectedList = listOf(listOf(0, 1), listOf(1, 0))
+        actualList = permute(intArrayOf(0, 1))
+        assertThat(actualList).containsExactlyInAnyOrderElementsOf(expectedList)
+
+        expectedList = listOf(listOf(1))
+        actualList = permute(intArrayOf(1))
+        assertThat(actualList).containsExactlyInAnyOrderElementsOf(expectedList)
     }
 
 }
