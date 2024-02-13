@@ -740,6 +740,8 @@ fun permute(nums: IntArray): List<List<Int>> {
     return result
 }
 
+
+
 private fun getPermutations(startIndex: Int, nums: IntArray, permutations: MutableList<List<Int>>) {
     if (startIndex == nums.size) {
         val permutation = mutableListOf<Int>()
