@@ -754,6 +754,7 @@ private fun getPermutations(startIndex: Int, nums: IntArray, permutations: Mutab
     }
 }
 
+
 private fun swap(arr: IntArray, a: Int, b: Int) {
     val temp = arr[a]
     arr[a] = arr[b]
